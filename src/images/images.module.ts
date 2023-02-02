@@ -8,11 +8,11 @@ import { join } from 'path';
 
 @Module({
 
-  imports : [TypeOrmModule.forFeature([Images]),
+  imports: [TypeOrmModule.forFeature([Images]),
   ServeStaticModule.forRoot({
     rootPath: join(__dirname, '..', 'files')
-  }),],
+  })],
   controllers: [ImagesController],
   providers: [ImagesService]
 })
-export class ImagesModule {}
+export class ImagesModule { }

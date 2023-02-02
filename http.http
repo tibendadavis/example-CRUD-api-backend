@@ -51,7 +51,7 @@ POST http://localhost:3000/images/uploads HTTP/1.1
 
 
 ### 
-GET http://localhost:3000/images/ HTTP/1.1
+GET http://localhost:3000/images/tesla-786c.jpg HTTP/1.1
 
 ### 
 DELETE  http://localhost:3000/cars/8 HTTP/1.1
@@ -89,7 +89,7 @@ PATCH  http://localhost:3000/reviews/5 HTTP/1.1
   content-type: application/json
 
   {
-    "description": "The car feels gorgeous! pun intended. Best purchase I made all this month! "
+    "description": "The car feels electric "
     
   }
 

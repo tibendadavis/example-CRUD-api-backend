@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
 
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, } from "typeorm";
 import { Images } from "../images/images.model";
-import { Reviews } from "../reviews/reviews.model";
 
 @Entity()
 export class Cars {

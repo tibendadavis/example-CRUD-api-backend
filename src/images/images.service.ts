@@ -4,7 +4,6 @@ import { Images } from './images.model';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ImagesDTO } from './images.dto';
-import { CarsDTO } from "../cars/cars.dto";
 import { Cars } from '../cars/cars.model';
 
 @Injectable()
@@ -12,10 +11,10 @@ export class ImagesService {
   constructor(
     @InjectRepository(Images)
     private readonly imagesRepository: Repository<Images>,
-  ) {}
+  ) { }
 
   async getImages(): Promise<Images[]> {
-    return this.imagesRepository.find();
+    return await this.imagesRepository.find();
   }
 
   async createImage(image: ImagesDTO, fname: string): Promise<Images> {
@@ -77,5 +76,5 @@ export class ImagesService {
   //   return await this.imageRepo.findOne({id});
   // }  
 
-   
+
 }
