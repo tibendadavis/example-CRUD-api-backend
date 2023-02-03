@@ -29,9 +29,7 @@ export class CarController {
   @Get(':id')
   async showSingleCar(@Param('id') id: number) {
     const car = await this.carservice.getSingleCar(id);
-    return {
-      car
-    };
+    return car;
   }
 
   @Patch(':id')

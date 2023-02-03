@@ -51,8 +51,8 @@ export class ImagesController {
   }
 
   @Get(':imgpath')
-  async seeUploadedFiles(@Param('imgpath') image, @Res() res) {
-    const img = await res.sendFile(image, { root: './files' });
+  seeUploadedFiles(@Param('imgpath') image, @Res() res) {
+    const img = res.sendFile(image, { root: './files' });
     return {
       message: "Images fectched successfully",
       img

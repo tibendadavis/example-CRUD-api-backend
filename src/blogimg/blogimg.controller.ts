@@ -11,49 +11,49 @@ import { diskStorage } from 'multer';
 
 @Controller('blogimg')
 export class BlogimgController {
-    constructor( private blogimgsrvc: BlogimgService){}
+  constructor(private blogimgsrvc: BlogimgService) { }
 
-    @Post('uploads')
-     @UseInterceptors(
-       FilesInterceptor('image', 1, {
-         storage: diskStorage({
-           destination: './files/blogs',
-           filename: editFileName,
-         }),
-         fileFilter: imageFileFilter,
-       }),
-     )
-     async uploadFile(
-       @Body() data:blogimgDTO,
-       @UploadedFiles() files) {
-       const response: any = [];
-      files.forEach(file => {
-          const fileReponse = {
-            originalname: file.originalname,
-            filename: file.filename,
-          };
-          response.push(fileReponse);
-          this.blogimgsrvc.createBlogimgs(data, fileReponse.filename);
-        });
-        return {
-         response,
-        }
-     }
-
-     @Get(':imgpath')
-    seeUploadedFiles(@Param('imgpath') image, @Res() res) {
-      const img = res.sendFile(image, { root: './files/blogs' });
-      return {
-        message: "Blogimg fectched successfully",
-        img
-      }
+  @Post('uploads')
+  @UseInterceptors(
+    FilesInterceptor('image', 1, {
+      storage: diskStorage({
+        destination: './files/blogs',
+        filename: editFileName,
+      }),
+      fileFilter: imageFileFilter,
+    }),
+  )
+  async uploadFile(
+    @Body() data: blogimgDTO,
+    @UploadedFiles() files) {
+    const response: any = [];
+    files.forEach(file => {
+      const fileReponse = {
+        originalname: file.originalname,
+        filename: file.filename,
+      };
+      response.push(fileReponse);
+      this.blogimgsrvc.createBlogimgs(data, fileReponse.filename);
+    });
+    return {
+      response,
     }
+  }
 
-    @Delete(':id')
-        async deleteReview(@Param('id') id: number) {
-          await this.blogimgsrvc.deleteBlogimgs(id);
-          return {
-            message: 'Blogimg deleted successfully',
-          };   
-        }
+  @Get(':imgpath')
+  seeUploadedFiles(@Param('imgpath') image, @Res() res) {
+    const img = res.sendFile(image, { root: './files/blogs' });
+    return {
+      message: "Blogimg fectched successfully",
+      img
+    }
+  }
+
+  @Delete(':id')
+  async deleteReview(@Param('id') id: number) {
+    await this.blogimgsrvc.deleteBlogimgs(id);
+    return {
+      message: 'Blogimg deleted successfully',
+    };
+  }
 }

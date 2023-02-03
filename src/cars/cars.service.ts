@@ -37,12 +37,12 @@ export class CarService {
   }
 
   async getSingleCar(carid: number) {
-    const singleUser = await this.carRepo.find({ relations: ["images"], where: { carid }, });
-    if (!singleUser) {
+    const singleCar = await this.carRepo.find({ relations: ["images"], where: { carid }, });
+    if (!singleCar) {
       throw new NotFoundException;
     } else {
-      const car = (singleUser)
-      return car
+
+      return singleCar
     }
 
   }
